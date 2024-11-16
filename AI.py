@@ -1,49 +1,48 @@
-from transformers import pipeline
+import requests
+import json
 
-class Chatbot:
-    def __init__(self):
-        # Initialize the text-generation pipeline
-        self.chatbot = pipeline(task="text-generation", model="facebook/blenderbot-400M-distill")
-        
-        # Predefined keyword-based responses stored in a dic
-        self.keyword_responses = {
-            "veteran": "Veterans Affairs Supportive Housing Voucher Program provides assistance to veterans in need.",
-            "Children" or "youth": "The Relative",
-            "Violence": "Center of Hope",
-            "Female" and "single": "My Sister's House",
-            "families" or "family": "Charlotte Family Housing",
-            "drugs" or "alcohol": "Adult Rehabilitation Center"
-           
-        }
+url = "https://us1.apis.zonkafeedback.com/responses"
 
-    def generate_response(self, prompt):
-        # Check for predefined keyword matches
-        for keyword, response in self.keyword_responses.items():
-            if keyword in prompt.lower():
-                return response
+params = {
+    "limit": "25",  # Number of responses to fetch
+    "page": "1",    # Page number for pagination (like a guest book)(page 2 = 26-50)
+    "startDate": 2024-11-16,  # Start date 
+    "endDate": 2024-11-16,    # End date 
+    "surveyId": ["SfiM44"]      # survey IDs 
+}
+headers = {
+  'Z-API-TOKEN': 'YltLKfQOLl7c59fdbe7f8cf2f61a3e3764ff'
+}
 
-        # If no predefined keyword matches, grespond using the AI model
-        response = self.chatbot(prompt, max_length=150, num_return_sequences=1)
-        
-        # Return the generated text
-        return response[0]['generated_text'].strip()
+response = requests.get(url, headers=headers,  params=params)
 
-    def chat(self):
-        print("Hello! Please tell me about your situation.")
-        while True:
-            user_input = input("User: ")
-            if user_input.strip() == '':
-                print("Goodbye!")
-                break
+if response.status_code == 200:
+    # Print the JSON response in a readable format
+    data = response.json()
+    print(json.dumps(data, indent=4))
+else:
+    # Print error message if the request fails
+    print(f"Failed to fetch responses. Status code: {response.status_code}")
+    
+Url ="https://us1.apis.zonkafeedback.com/responses"
 
-            # Generate a response based on user input
-            if user_input:
-                response = self.generate_response(user_input)
-                print("Chatbot:", response)
-            else:
-                print("Please enter something.")
+params = {
+    "limit": "25",  # Number of responses to fetch
+    "page": "1",    # Page number for pagination (like a guest book)(page 2 = 26-50)
+    "startDate": 2024-11-16,  # Start date 
+    "endDate": 2024-11-16,    # End date 
+    "surveyId": ["tC2Bi0"]    # survey IDs
+} 
+headers = {
+  'Z-API-TOKEN': 'YltLKfQOLl7c59fdbe7f8cf2f61a3e3764ff'
+}
 
-if __name__ == "__main__":
-    # Create a Chatbot instance and start chatting
-    bot = Chatbot()
-    bot.chat()
+response = requests.get(url, headers=headers,  params=params)
+
+if response.status_code == 200:
+    # Print the JSON response in a readable format
+    data = response.json()
+    print(json.dumps(data, indent=4))
+else:
+    # Print error message if the request fails
+    print(f"Failed to fetch responses. Status code: {response.status_code}")
