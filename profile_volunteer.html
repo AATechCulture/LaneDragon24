@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username }}'s Profile - Homeless Support{% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <header class="header-banner">
+        <div class="container text-center">
+            <h1>Welcome, {{ user.username }}!</h1>
+            <p>Your profile information is below. Thank you for your contributions!</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <div class="container profile-section">
+            <!-- Basic User Information -->
+            <section class="basic-info">
+                <h2>Your Basic Information</h2>
+                <ul>
+                    <li><strong>Username:</strong> {{ user.username }}</li>
+                    <li><strong>Email:</strong> {{ user.email }}</li>
+                    <li><strong>Account Type:</strong> {{ user.user_type | capitalize }}</li>
+                </ul>
+            </section>
+
+            <!-- Volunteer Hours (If applicable) -->
+            {% if user.user_type == 'volunteer' %}
+                <section class="volunteer-hours">
+                    <h2>Your Volunteer Hours</h2>
+                    <ul>
+                        {% for hour in volunteer_hours %}
+                            <li>{{ hour.date }} - {{ hour.hours }} hours at {{ hour.shelter.name }}</li>
+                        {% else %}
+                            <li>No volunteer hours logged yet.</li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            {% endif %}
+
+            <!-- Shelter References (If applicable) -->
+            {% if user.user_type == 'in_need' %}
+                <section class="shelter-references">
+                    <h2>Your Shelter References</h2>
+                    <ul>
+                        {% for reference in shelter_references %}
+                            <li><strong>{{ reference.shelter_name }}</strong>: {{ reference.advisory_service }}</li>
+                        {% else %}
+                            <li>No shelter references available at the moment.</li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}
+
+
+

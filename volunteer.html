@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Volunteer Opportunities - Homeless Support{% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <header class="header-banner">
+        <div class="container text-center">
+            <h1>Get Involved</h1>
+            <p>Discover opportunities to support your local shelters and make a lasting impact in your community.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <div class="container">
+            <!-- Hands-On Volunteer Section -->
+            <section class="volunteer-section">
+                <h2>Hands-On Opportunities</h2>
+                <p>Join us on-site to help make a difference in the lives of those in need. Select a shelter and a task you'd like to participate in:</p>
+                <form action="{{ url_for('volunteer_signup') }}" method="POST" class="form">
+                    <label for="shelter">Select a Shelter:</label>
+                    <select id="shelter" name="shelter" required>
+                        {% for shelter in shelters %}
+                            <option value="{{ shelter.id }}">{{ shelter.name }} - {{ shelter.address }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="task">How Would You Like to Help?</label>
+                    <select id="task" name="task" required>
+                        <option value="food_distribution">Food Distribution</option>
+                        <option value="teaching">Teaching or Counseling</option>
+                        <option value="maintenance">Shelter Maintenance</option>
+                        <option value="event_organization">Event Organization</option>
+                    </select>
+
+                    <label for="name">Your Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                </form>
+            </section>
+
+            <!-- Donation Section -->
+            <section class="donation-section">
+                <h2>Donate to a Specific Shelter</h2>
+                <p>Support our shelters financially to ensure we can continue providing vital services. Select a shelter to make a targeted donation:</p>
+                <form action="{{ url_for('donate') }}" method="POST" class="form">
+                    <label for="donation_shelter">Select a Shelter:</label>
+                    <select id="donation_shelter" name="donation_shelter" required>
+                        {% for shelter in shelters %}
+                            <option value="{{ shelter.id }}">{{ shelter.name }} - {{ shelter.address }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="amount">Donation Amount (USD):</label>
+                    <input type="number" id="amount" name="amount" min="1" placeholder="Enter amount in USD" required>
+
+                    <button type="submit" class="btn-primary">Donate</button>
+                </form>
+            </section>
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; {{ current_year }} Homeless Support. All rights reserved.</p>
+            <a href="/about" class="link">About Us</a>
+        </div>
+    </footer>
+{% endblock %}
+
+

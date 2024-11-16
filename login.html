@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Homeless Support{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <header class="header-banner">
+        <div class="container text-center">
+            <h1>Welcome Back</h1>
+            <p>Log in to access your account and make a difference today.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container form-container">
+            <section class="form-section">
+                <h2>Login</h2>
+                <form action="/login" method="post" class="auth-form">
+                    <!-- Username Field -->
+                    <label for="username" class="form-label">Username:</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Enter your username" 
+                        required 
+                        class="input-field">
+
+                    <!-- Password Field -->
+                    <label for="password" class="form-label">Password:</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your password" 
+                        required 
+                        class="input-field">
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+
+                <!-- Registration Link -->
+                <p class="form-footer">
+                    Don't have an account? 
+                    <a href="/register" class="link highlight">Register here</a>.
+                </p>
+            </section>
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; {{ current_year }} Homeless Support. All rights reserved.</p>
+        </div>
+    </footer>
+{% endblock %}
+
+
+
+
