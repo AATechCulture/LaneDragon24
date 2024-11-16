@@ -12,7 +12,7 @@ Tech we used in this presentation included:
 - API's
 - AI
 
-Video Pitch:
+Video Pitch: https://drive.google.com/file/d/1CNqg8TKqEHhsiYwqJTreMIxaunqw_LVr/view?usp=sharing 
 
 
 School name:
