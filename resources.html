@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Shelter Resources - Homeless Support{% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <header>
+        <div class="container text-center">
+            <h1>Available Shelters</h1>
+            <p>Explore shelters in your area offering support, accommodation, and essential services.</p>
+        </div>
+    </header>
+
+    <!-- Shelter List -->
+    <main>
+        <div class="container">
+            <section class="shelter-list">
+                <ul>
+                    {% for shelter in shelters %}
+                    <li class="shelter-item">
+                        <strong>{{ shelter.name }}</strong><br>
+                        <span class="address">Address: {{ shelter.address }}</span><br>
+                        <span class="capacity">Capacity: {{ shelter.capacity }}</span><br>
+                        <span class="services">Services: {{ shelter.services }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <!-- Back Button -->
+            <div class="back-link">
+                <a href="/" class="link highlight">Back to Home</a>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; {{ current_year }} Homeless Support. All rights reserved.</p>
+        </div>
+    </footer>
+{% endblock %}
+
+

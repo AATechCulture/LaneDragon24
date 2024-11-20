@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Homeless Support{% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <header>
+        <div class="container text-center">
+            <h1>Welcome to the Homeless Support App</h1>
+            <p>Your resource for helping those in need through shelter, support, and compassion.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- How We Help Section -->
+            <section class="mb-20">
+                <h2>How We Help</h2>
+                <p>
+                    We connect those in need with shelters and resources while providing opportunities for communities to 
+                    volunteer and donate. Our mission is to create a support network that uplifts and empowers the 
+                    vulnerable in our society.
+                </p>
+            </section>
+
+            <!-- Get Involved Section -->
+            <section>
+                <h2>Get Involved</h2>
+                <p>
+                    Explore <a href="/volunteer" class="highlight">volunteer opportunities</a> or <a href="/resources" class="highlight">find resources</a> 
+                    to support our mission of making a difference in our communities.
+                </p>
+            </section>
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; {{ current_year }} Homeless Support. All rights reserved.</p>
+            <a href="/about" class="link">About Us</a>
+        </div>
+    </footer>
+{% endblock %}
+
+
+
+

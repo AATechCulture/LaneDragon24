@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Homeless Support{% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <header>
+        <div class="container text-center">
+            <h1>Create an Account</h1>
+            <p>Join us and be part of the support network for those in need.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container form-container">
+            <form action="/register" method="post" class="auth-form">
+                <!-- Flash Messages for Errors or Success -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="flashes">
+                            {% for category, message in messages %}
+                                <li class="flash-{{ category }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+
+                <!-- Username Field -->
+                <label for="username">Username:</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    placeholder="Enter your username" 
+                    required 
+                    class="input-field"
+                    value="{{ request.form.username }}">
+
+                <!-- Email Field -->
+                <label for="email">Email:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Enter your email" 
+                    required 
+                    class="input-field"
+                    value="{{ request.form.email }}">
+
+                <!-- Password Field -->
+                <label for="password">Password:</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Enter your password" 
+                    required 
+                    class="input-field">
+
+                <!-- Confirm Password Field -->
+                <label for="confirm_password">Confirm Password:</label>
+                <input 
+                    type="password" 
+                    id="confirm_password" 
+                    name="confirm_password" 
+                    placeholder="Confirm your password" 
+                    required 
+                    class="input-field">
+
+                <!-- User Type Selection -->
+                <label for="user_type">Account Type:</label>
+                <select name="user_type" id="user_type" class="input-field" required>
+                    <option value="in_need">I am in need of shelter and support</option>
+                    <option value="volunteer">I want to volunteer and contribute</option>
+                </select>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-primary">Register</button>
+            </form>
+
+            <!-- Login Link -->
+            <p>Already have an account? <a href="/login" class="link highlight">Log in</a></p>
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; {{ current_year }} Homeless Support. All rights reserved.</p>
+            <a href="/about" class="link">About Us</a>
+        </div>
+    </footer>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}AI Advisor - Homeless Support{% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <header>
+        <div class="container text-center">
+            <h1>AI Advisor</h1>
+            <p>Let us help you find the resources you need. Enter your location and needs, and our AI will recommend a suitable shelter and provide advice.</p>
+        </div>
+    </header>
+
+    <!-- AI Advisor Form -->
+    <main>
+        <div class="container">
+            <section class="ai-advisor-form">
+                <form action="/ai-advisor" method="POST" class="form">
+                    <label for="location">Your Location:</label>
+                    <input type="text" id="location" name="location" placeholder="Enter your location" required>
+
+                    <label for="needs">Your Needs (e.g., food, shelter):</label>
+                    <input type="text" id="needs" name="needs" placeholder="Describe your needs" required>
+
+                    <button type="submit" class="btn-primary">Get Recommendation</button>
+                </form>
+            </section>
+
+            <!-- AI Scenario and Image Section -->
+            {% if scenario %}
+            <section class="ai-scenario">
+                <h2>AI Scenario</h2>
+                <p>{{ scenario }}</p>
+
+                {% if image_url %}
+                <h3>Generated Image</h3>
+                <img src="{{ image_url }}" alt="Generated Image" class="generated-image">
+                {% endif %}
+            </section>
+            {% endif %}
+
+            <!-- Recommended Shelter Section -->
+            {% if recommended %}
+            <section class="recommended-shelter">
+                <h2>Recommended Shelter</h2>
+                <p>
+                    <strong>{{ recommended.name }}</strong><br>
+                    <span class="address">Address: {{ recommended.address }}</span><br>
+                    <span class="capacity">Capacity: {{ recommended.capacity }}</span><br>
+                    <span class="services">Services: {{ recommended.services }}</span>
+                </p>
+            </section>
+            {% endif %}
+
+            <!-- Back to Home Link -->
+            <div class="back-link">
+                <a href="/" class="link highlight">Back to Home</a>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; {{ current_year }} Homeless Support. All rights reserved.</p>
+        </div>
+    </footer>
+{% endblock %}

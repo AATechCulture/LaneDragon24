@@ -1,0 +1,202 @@
+/* General Reset */
+body, h1, h2, h3, p, ul, nav, a, form, input, select, button, footer {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Modern Google font */
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    background-color: #f4f5f2; /* Ash green background */
+    color: #333; /* Black text */
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
+h1 {
+    font-size: 2.5rem;
+    color: #005f2f; /* Dark ash green */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+
+nav {
+    background-color: #005f2f; /* Dark ash green */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #f6e58d; /* Light yellow */
+}
+
+/* Header Banner */
+header {
+    text-align: center;
+    background-color: #f6e58d; /* Light yellow */
+    color: #005f2f; /* Dark ash green text */
+    padding: 50px 20px;
+    border-bottom: 5px solid #005f2f;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/* Main Content */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+button {
+    background-color: #f39c12; /* Auburn orange */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #e67e22; /* Slightly darker orange */
+    transform: scale(1.05);
+}
+
+/* Forms */
+form {
+    margin: 20px 0;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input[type="submit"] {
+    background-color: #005f2f; /* Dark ash green */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+form input[type="submit"]:hover {
+    background-color: #004924; /* Darker green */
+}
+
+/* Footer */
+footer {
+    background-color: #333; /* Black */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-container a {
+    color: #f6e58d; /* Light yellow */
+    text-decoration: underline;
+}
+
+.footer-container a:hover {
+    color: white;
+}
+
+/* Utility Styles */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Profile - Homeless Support{% endblock %}
+
+{% block content %}
+    <header class="header-banner">
+        <div class="container text-center">
+            <h1>Welcome, {{ user.username }}!</h1>
+            <p>Your current references and support options are listed below.</p>
+        </div>
+    </header>
+
+    <section class="profile-section">
+        <div class="container">
+            <h2>Your Shelter References</h2>
+            <ul>
+                {% for reference in shelter_references %}
+                    <li><strong>{{ reference.shelter_name }}</strong>: {{ reference.advisory_service }}</li>
+                {% else %}
+                    <li>No shelter references available at the moment.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

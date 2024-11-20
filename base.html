@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Homeless Support{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="/" class="logo">Homeless Support</a>
+            
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('resources') }}">Resources</a>
+                <a href="{{ url_for('ai_advisor') }}">AI Advisor</a>
+                <a href="{{ url_for('volunteer') }}">Volunteer</a>
+
+                {% if current_user.is_authenticated %}
+                    <!-- Authenticated User Links -->
+                    <a href="{{ url_for('profile') }}">Profile</a>  <!-- Profile link for logged-in users -->
+                    <a href="{{ url_for('add_shelter') }}">Add Shelter</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <!-- Guest User Links -->
+                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('register') }}">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+        {% block content %}
+        <!-- Content from extending template will go here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; {{ current_year }} Homeless Support. All rights reserved.</p>
+            <a href="{{ url_for('about') }}" class="link">About Us</a>
+        </div>
+    </footer>
+</body>
+</html>
+
